@@ -1,0 +1,66 @@
+/* styles/TranslateText.module.css */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.glossaryButton {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.glossaryButton:hover {
+    background-color: #e0e0e0;
+}
+
+.textAreas {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.textArea {
+    width: 48%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-height: 150px;
+    resize: vertical;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.textArea[readonly] {
+    background-color: #f9f9f9;
+}
+
+.swapButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.swapButton:hover {
+    background-color: #0056b3;
+}

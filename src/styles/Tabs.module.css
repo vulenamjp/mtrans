@@ -1,0 +1,27 @@
+/* styles/Tabs.module.css */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tabButton {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-weight: normal;
+    border-radius: 5px 5px 0 0;
+    transition: background-color 0.3s ease;
+}
+
+.tabButton:hover {
+    background-color: #e0e0e0;
+}
+
+.tabButtonActive {
+    background-color: #fff;
+    font-weight: bold;
+    border-bottom: 2px solid #007bff;
+}
