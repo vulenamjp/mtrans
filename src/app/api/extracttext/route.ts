@@ -1,4 +1,3 @@
-// app/api/extracttext/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import pdf from 'pdf-parse';
 
@@ -7,17 +6,24 @@ export async function POST(req: NextRequest) {
     const formData = await req.formData();
     const pdfFile = formData.get('pdfFile') as File | null;
 
-    if (!pdfFile) {
-      return NextResponse.json({ error: 'Vui lòng tải lên tệp PDF.' }, { status: 400 });
+    if (pdfFile) {
+      console.log('PDF file size:', pdfFile.size, 'bytes');
     }
 
-    const buffer = await pdfFile.arrayBuffer();
+    if (!pdfFile) {
+      return NextResponse.json({ error: 'Please upload a PDF file.' }, { status: 400 });
+    }
 
-    const data = await pdf(Buffer.from(buffer));
+    // Convert the File object to a Buffer
+    const arrayBuffer = await pdfFile.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+
+    // Use pdf-parse to extract text from the PDF
+    const data = await pdf(buffer);
 
     return NextResponse.json({ text: data.text }, { status: 200 });
   } catch (error) {
-    console.error('Lỗi trích xuất PDF:', error);
-    return NextResponse.json({ error: 'Không thể trích xuất văn bản từ PDF.' }, { status: 500 });
+    console.error('Error extracting text from PDF:', error);
+    return NextResponse.json({ error: 'Failed to extract text from PDF. ' + error }, { status: 500 });
   }
 }
